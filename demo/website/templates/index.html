@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>Notetaker 1000</title>
+    </head>
+<body>
+<div class="top-bar">
+    <h1>Notetaker 1000</h1>
+</div>
+<hr>
+
+<div class="content">
+    <a id="add_button" href="newnote">Add</a>
+    <a id="add_button" href="cool_picture">Cool Picture</a>
+
+    {% if notes%}
+            <ul>
+                {% for note in notes %}
+                    <li>
+                        <strong>{{ note.date|date:"F j, Y" }}</strong>: {{ note.text}}
+                        <form action="{% url 'delete_note' note.id%}" method="post" style="display:inline;">
+                            {% csrf_token %} <button type="submit" id="delete_button">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+    {% else %}
+            <p>No notes found yet. Add some!</p>
+    {% endif %}
+</div>
+
+</body>

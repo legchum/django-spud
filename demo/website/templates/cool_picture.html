@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/cool_picture.css' %}">
+        <title>Cool picture :)</title>
+    </head>
+<body>
+<div class="top-bar">
+    <h1>Cool picture</h1>
+</div>
+<hr>
+<div class="content">
+    <p><a class='red_button' href="{% url '' %}">Back to Home</a></p>
+    <div class="image-container">
+        <img src="{% static 'images/cool_picture.png' %}" alt="Cool Picture">
+    </div>
+</div>
+
+</body>
