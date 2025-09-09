@@ -1,13 +1,15 @@
 {% extends 'pages/base.html' %} {% block content %}
+{% load crispy_forms_tags %}
+
 <body>
     <br />
-    <div class="container bg-dark p-5">
+    <div class="container bg-primary p-5">
         <h3>Create your account</h3>
         <h5>start managing your clients today</h5>
         <hr />
         <br />
         <form method="POST" autocomplete="off">
-            {% csrf_token %} {{form.as_p}}
+            {% csrf_token %} {{form|crispy}}
             <br />
             <button type="submit" class="btn btn-primary w-100 btn-block p-2">
                 create account

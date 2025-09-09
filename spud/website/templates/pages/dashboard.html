@@ -1,0 +1,38 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+
+<button type="button" class="btn btn-primary m-2">Primary</button>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">Date Joined</th>
+      <th scope="col">View</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if Records %}
+        {% for Record in Records %}
+        <tr>
+            <td>{{Record.id}}</td>
+            <td>{{Record.first_name}} {{Record.last_name}}</td>
+            <td>{{Record.email}}</td>
+            <td>{{Record.phone}}</td>
+            <td>{{Record.address}}</td>
+            <td>{{Record.city}}</td>
+            <td>{{Record.creation_data}}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+
+
+{% endblock %}
