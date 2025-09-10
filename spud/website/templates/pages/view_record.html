@@ -18,6 +18,6 @@
     <br>
     <a href="{% url 'dashboard' %}" class="btn btn-secondary" style="margin-left: 20px;"> Return to Dashboard</a>
     <a href="{% url 'update_record' record.id %}" class="btn btn-info"> Update</a>
-    <a href="{% url '' %}" class="btn btn-danger"> Delete </a>
+    <a href="{% url 'delete_record' record.id %}" class="btn btn-danger"> Delete </a>
 
 {% endblock %}
