@@ -50,7 +50,7 @@ def register(request):
 
 @login_required(login_url="login")
 def dashboard(request):
-    
+
     my_records = Record.objects.all()
     context = {'Records':my_records}
     return render(request, 'pages/dashboard.html', context=context)
@@ -64,7 +64,7 @@ def create_record(request):
         if form.is_valid():
             form.save()
             return redirect("dashboard")
-    
+
     context = {'create_form':form}
     return render(request, 'pages/create_record.html', context=context)
 
@@ -80,3 +80,9 @@ def update_record(request, pk):
             return redirect("dashboard")
     context = {'update_form': form}
     return render(request, 'pages/update_record.html', context=context)
+
+@login_required(login_url="login")
+def view_record(request, pk):
+    record = Record.objects.get(id=pk)
+    context = {'record':record}
+    return render(request, 'pages/view_record.html', context=context)

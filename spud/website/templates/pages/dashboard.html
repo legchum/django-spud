@@ -1,38 +1,38 @@
 {% extends 'pages/base.html' %}
 {% block content %}
+<div style="margin: 20px;">
+    <a type="button" class="btn btn-primary m-2" href="{% url 'create_record' %}">Create</a>
 
-<a type="button" class="btn btn-primary m-2" href="{% url 'create_record' %}">Create</a>
-
-<table class="table table-hover table-bordered">
-  <thead class="table-primary">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Address</th>
-      <th scope="col">City</th>
-      <th scope="col">Date Joined</th>
-      <th scope="col">View</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% if Records %}
-        {% for Record in Records %}
-        <tr>
-            <td>{{Record.id}}</td>
-            <td>{{Record.first_name}} {{Record.last_name}}</td>
-            <td>{{Record.email}}</td>
-            <td>{{Record.phone}}</td>
-            <td>{{Record.address}}</td>
-            <td>{{Record.city}}</td>
-            <td>{{Record.creation_data}}</td>
-            <td></td>
+    <table class="table table-hover table-bordered ">
+    <thead class="table-primary">
+        <tr class="fs-3">
+        <th scope="col">ID</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">Date Joined</th>
+        <th scope="col">View</th>
         </tr>
-        {% endfor %}
-    {% endif %}
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+        {% if Records %}
+            {% for Record in Records %}
+            <tr class="fs-4">
+                <td>{{Record.id}}</td>
+                <td>{{Record.first_name}} {{Record.last_name}}</td>
+                <td>{{Record.email}}</td>
+                <td>{{Record.phone}}</td>
+                <td>{{Record.address}}</td>
+                <td>{{Record.city}}</td>
+                <td>{{Record.creation_data}}</td>
+                <td> <a href="{% url 'view_record' Record.id %}" class="btn btn-sm btn-info">View</a> </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}

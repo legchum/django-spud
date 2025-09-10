@@ -1,8 +1,4 @@
-.doakes {
-    position: fixed;
-    bottom: 0px;
-    left: 0;
-    img {
-        scale: 0.5;
-    }
+.card {
+    margin: 20px;
+    margin-bottom: 0px;
 }
