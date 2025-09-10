@@ -1,2 +1,3 @@
 venv
 .ropeproject
+spud/db.sqlite3
