@@ -1,13 +1,17 @@
 {% extends 'pages/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container bg-primary p-5">
+<br>
+<div class="container bg-primary p-3 border rounded-5 w-50"">
     <form method="POST">
         {% csrf_token %}
         {{create_form|crispy}}
         <button type="submit" class="btn btn-primary w-100 btn-block p-2">
-            Create Record
+            <i class="fa fa-plus" aria-hidden="true"></i>  Create Record
         </button>
+        <a href="{% url 'dashboard' %}" class="btn btn-primary w-100 btn-block p-2"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Return to Dashboard</a>
+
+        </a>
     </form>
 </div>
 {% endblock %}

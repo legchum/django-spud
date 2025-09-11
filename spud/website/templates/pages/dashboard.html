@@ -27,7 +27,7 @@
                 <td>{{Record.address}}</td>
                 <td>{{Record.city}}</td>
                 <td>{{Record.creation_data}}</td>
-                <td> <a href="{% url 'view_record' Record.id %}" class="btn btn-sm btn-info">View</a> </td>
+                <td> <a href="{% url 'view_record' Record.id %}" class="btn btn-sm btn-info"> <i class="fa fa-eye" aria-hidden="true"></i> View</a> </td>
             </tr>
             {% endfor %}
         {% endif %}

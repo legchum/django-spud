@@ -1,0 +1,15 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+{% load static %}
+
+<body>
+    <br />
+    <div class="container bg-primary p-3 border rounded-5 w-50 text-center">
+        <img src="{% static 'images/doakes.gif' %}"  alt="Doakes">
+    </div>
+    <div class="text-center mt-3">
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Return to Dashboard</a>
+    </div>
+</body>
+
+{% endblock %}

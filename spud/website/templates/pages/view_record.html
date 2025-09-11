@@ -1,8 +1,9 @@
 {% extends 'pages/base.html' %}
 
 {% block content %}
-    <div class="card">
+    <div class="card bg-light">
         <div class="card-header fw-bold fs-3">
+            <i class="fa fa-user" aria-hidden="true"></i>
             {{record.last_name|upper}}
             {{record.first_name}}
         </div>
@@ -16,8 +17,8 @@
         </div>
     </div>
     <br>
-    <a href="{% url 'dashboard' %}" class="btn btn-secondary" style="margin-left: 20px;"> Return to Dashboard</a>
-    <a href="{% url 'update_record' record.id %}" class="btn btn-info"> Update</a>
-    <a href="{% url 'delete_record' record.id %}" class="btn btn-danger"> Delete </a>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary" style="margin-left: 20px;"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Return to Dashboard</a>
+    <a href="{% url 'update_record' record.id %}" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i>  Update</a>
+    <a href="{% url 'delete_record' record.id %}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>  Delete </a>
 
 {% endblock %}

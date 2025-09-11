@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib import messages
 from .forms import CreateUserForm, LoginForm, CreateRecordForm, UpdateRecordForm
 from django.contrib.auth.decorators import login_required
-from .models import Record
+from .models import Record, Dexter_data
 
 # Create your views here.
 def home(request):
@@ -32,6 +32,7 @@ def login(request):
 
 def user_logout(request):
     logout(request)
+    messages.success(request, 'Logged Out Successfully!')
     return redirect('')
 
 def register(request):
@@ -48,6 +49,15 @@ def register(request):
 
     return render(request,"pages/register.html",context=context)
 
+def doakes(request):
+    return render(request, 'pages/doakes.html')
+
+@login_required(login_url="login")
+def dexter_data(request):
+    my_dexter_data = Dexter_data.objects.all()
+    context = {'Dexter_data':my_dexter_data}
+    return render(request, 'pages/dexter_data.html', context=context)
+
 @login_required(login_url="login")
 def dashboard(request):
 
@@ -63,6 +73,7 @@ def create_record(request):
 
         if form.is_valid():
             form.save()
+            messages.success(request, 'Record created successfully!')
             return redirect("dashboard")
 
     context = {'create_form':form}
@@ -77,6 +88,7 @@ def update_record(request, pk):
         form = UpdateRecordForm(request.POST, instance=record)
         if form.is_valid:
             form.save()
+            messages.success(request, 'Record updated successfully!')
             return redirect("dashboard")
     context = {'update_form': form}
     return render(request, 'pages/update_record.html', context=context)
@@ -91,4 +103,5 @@ def view_record(request, pk):
 def delete_record(request, pk):
     record = Record.objects.get(id=pk)
     record.delete()
+    messages.success(request, 'Record deleted successfully!')
     return redirect('dashboard')

@@ -1,0 +1,50 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<div style="margin: 20px;">
+    <table class="table table-hover table-bordered ">
+    <thead class="table-primary">
+        <tr class="fs-3">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Dexter Points</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if Dexter_data %}
+            {% for Record in Dexter_data %}
+            <tr class="fs-4">
+                <td>{{Record.id}}</td>
+                <td>{{Record.name}}</td>
+                <td>{{Record.dexter_points}}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+    <canvas id="myChart" class="w-100"></canvas>
+    <script>
+
+      new Chart("myChart", {
+        type: "bar",
+        data: {
+          labels: [{% for row in Dexter_data %} '{{row.name}}', {% endfor %}],
+          datasets: [{
+            backgroundColor: "green",
+            data: [{% for row in Dexter_data %} {{row.dexter_points}}, {% endfor %}]
+          }]
+        },
+        options: {
+          legend: {display: false},
+          title: {
+            display: true,
+            text: "Demo"
+          }
+        }
+      });
+    </script>
+</div>
+
+{% endblock %}

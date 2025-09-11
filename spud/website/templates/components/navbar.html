@@ -13,37 +13,42 @@
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link active" href="{% url 'doakes' %}"
+                        >Doakes
+                        <span class="visually-hidden">(current)</span>
+                    </a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="nav-link" href="{% url 'dexter_data' %}"
+                    ><i class="fa fa-table" aria-hidden="true"></i>  Dexter Data</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}"
+                    ><i class="fa fa-table" aria-hidden="true"></i>  Dashboard</a
+                    >
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}"
-                        >Logout ({{ user.username }})</a
+                        ><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout ({{ user.username }})</a
                     >
                 </li>
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}"
-                        >Login</a
+                        ><i class="fa fa-sign-in" aria-hidden="true"></i>  Login</a
                     >
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'register' %}"
-                        >Register</a
+                        ><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</a
                     >
                 </li>
                 {% endif %}
             </ul>
 
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="search" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
